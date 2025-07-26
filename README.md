@@ -2,10 +2,6 @@
 
 ResuMate is a modern web application that helps job seekers evaluate and improve their resumes using AI. Upload your resume (PDF format), and get instant, detailed feedback on ATS compatibility, tone, structure, and content — all visualized beautifully.
 
-<p align="center">
-  <img src="https://your-vercel-app.vercel.app/demo-image.png" alt="ResuMate Demo" width="600"/>
-</p>
-
 ---
 
 ## 🚀 Features
@@ -31,6 +27,6 @@ ResuMate is a modern web application that helps job seekers evaluate and improve
 
 ## 📸 Demo
 
-🔗 **Live Site:** [resumate.vercel.app](https://resumate.vercel.app)
+🔗 **Live Site:** [resumate.vercel.app](https://resu-mate-six.vercel.app/)
 
 > Try uploading a resume PDF and watch the AI generate real-time feedback!
