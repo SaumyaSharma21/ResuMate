@@ -10,7 +10,6 @@ ResuMate is a modern web application that helps job seekers evaluate and improve
 - 🔍 **AI Feedback Engine** – Suggestions on tone, structure, and skills
 - ✅ **ATS Readiness Check** – See how your resume performs against Applicant Tracking Systems
 - 📷 **Live Preview** – View your uploaded resume as an image
-- 🧼 **Manage Resumes** – Upload, analyze, and delete old resumes
 - 🛡️ **Authentication** – Secure login via Puter.js
 
 ---
