@@ -6,7 +6,7 @@ import ATS from "~/components/ATS";
 import Details from "~/components/Details";
 
 export const meta = () => ([
-    { title: 'ResuMate | Review ' },
+    { title: 'Resumind | Review ' },
     { name: 'description', content: 'Detailed overview of your resume' },
 ])
 
@@ -27,7 +27,7 @@ const Resume = () => {
             const resume = await kv.get(`resume:${id}`);
 
             if(!resume) return;
-
+            
             const data = JSON.parse(resume);
 
             const resumeBlob = await fs.read(data.resumePath);
@@ -42,7 +42,18 @@ const Resume = () => {
             const imageUrl = URL.createObjectURL(imageBlob);
             setImageUrl(imageUrl);
 
-            setFeedback(data.feedback);
+            const normalizeFeedback = (fb: any): Feedback => {
+                return {
+                    overallScore: fb?.overallScore ?? 0,
+                    ATS: fb?.ATS ?? { score: 0, tips: [] },
+                    toneAndStyle: fb?.toneAndStyle ?? { score: 0, tips: [] },
+                    content: fb?.content ?? { score: 0, tips: [] },
+                    structure: fb?.structure ?? { score: 0, tips: [] },
+                    skills: fb?.skills ?? { score: 0, tips: [] }
+                };
+            };
+            setFeedback(normalizeFeedback(data.feedback));
+            
             console.log({resumeUrl, imageUrl, feedback: data.feedback });
         }
 
@@ -76,7 +87,11 @@ const Resume = () => {
                     {feedback ? (
                         <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
                             <Summary feedback={feedback} />
+                            {feedback.ATS ? (
                             <ATS score={feedback.ATS.score || 0} suggestions={feedback.ATS.tips || []} />
+                            ) : (
+                                <div className="text-gray-500">ATS feedback not available.</div>
+                            )}
                             <Details feedback={feedback} />
                         </div>
                     ) : (
